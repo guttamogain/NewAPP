@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
+  <div class="container">
+    <a class="navbar-brand" href="#">{{ title }}</a>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn">
+        <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']" style="color:white">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" id="watch-list" [routerLink]="['/watchlist']" style="color:white"[routerLinkActive]="['active']">My Watchlist</a>
+      </ul>
+
+      <ul class="navbar-nav mr-auto" *ngIf="!isLoggedIn">
+        <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['active']" id="register-button">Register</a>
+        <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['active']" (click)="test()" >Login</a>
+      </ul>
+      
+      <form class="form-inline my-2 my-lg-0" *ngIf="isAdmin"  >
+        <input name="Searchbox" [(ngModel)]="searchText" #searchBox id="search-box" class="form-control" (keyup.enter)="search();searchBox.value=''"
+          type="text" placeholder="Search" aria-label="Search" >
+        <button id="search-button" type="button" class="btn btn-primary text-center" style="color:white" onclick="window.location.reload()" (click)="search()">Search</button>
+        <div class="nav-item dropdown" >
+          <a class="nav-link dropdown-toggle" id="navbarDropdown"  role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">categories</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/category/business']" id="navbarDropdownBusiness" [routerLinkActive]="['active']">Business</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/category/entertainment']" [routerLinkActive]="['active']">Entertainment</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/category/health']" [routerLinkActive]="['active']">Health</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/category/sports']" [routerLinkActive]="['active']">Sports</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/category/technology']" [routerLinkActive]="['active']">Technology</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/category/science']" [routerLinkActive]="['active']">Science</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </div>
+        
+      </form>
+
+      <form class="form-inline my-2 my-lg-0" *ngIf="isLoggedIn"  >
+        <a class="nav-link" id="log-out" [routerLink]="['/logout']" style="color:white" [routerLinkActive]="['active']">Logout</a>
+      </form>
+
+    </div>
+  </div>
+ </nav>
+ <div class="container col-md-6 col-md-offset-3">
+  <alert class="text-center"></alert>
+ </div>
+<router-outlet></router-outlet>
+
+<footer class="fixed-bottom">
+  <div class="row">
+    <div class="col-sm-6 text-center">
+      <h6> All rights reserved. Copyright © 2019  News Api . </h6>
+      
+    </div>
+    <div class="col-sm-6 text-center">
+     <h6>News Api is Best for the Developers .</h6>
+    </div>
+  </div>
+  <!--End of row -->
+</footer>
+
+
+

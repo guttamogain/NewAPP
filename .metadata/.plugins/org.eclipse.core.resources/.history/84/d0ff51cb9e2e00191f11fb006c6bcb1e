@@ -1,0 +1,14 @@
+package com.stackroute.newsapp.exception;
+
+/**
+ * This Class is responsible for NewsNotFoundException.
+ * @author ubuntu
+ *
+ */
+@SuppressWarnings("serial")
+public class NewsNotFoundException extends Exception{
+
+	public NewsNotFoundException(String message){
+		super(message);
+	}
+}

@@ -1,0 +1,38 @@
+version:  '3'
+services:
+  news-sql:
+   image: mysql:5.5
+   network_mode: host
+   ports: 
+   - "3306:3306"
+   environment:
+        MYSQL_ROOT_PASSWORD: root123
+        MYSQL_DATABASE: newsDb
+        MYSQL_USER: app_root
+        MYSQL_PASSWORD: root123
+  user-app:
+   image: ashok22/moviecruiserapp1:newsservice2
+   restart: always
+   network_mode: host
+   ports: 
+   - 8089:8089
+   expose:
+   - 8089
+   depends_on:
+   - news-sql
+  news-app:
+   image: ashok22/moviecruiserapp1:newsservice1
+   restart: always
+   network_mode: host
+   ports: 
+   - 8081:8081
+   expose:
+   - 8081
+   depends_on:
+   - news-sql  
+  angular-app:
+    image: ashok22/moviecruiserapp1:newsservice3
+    container_name: angular-docker
+    network_mode: host
+    ports:
+    - 4200:4200

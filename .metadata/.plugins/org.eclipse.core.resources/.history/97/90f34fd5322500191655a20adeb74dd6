@@ -1,0 +1,22 @@
+package com.stackroute.newsapp.service;
+
+import java.util.Set;
+
+import com.stackroute.newsapp.domain.News;
+import com.stackroute.newsapp.exception.NewsAlreadyExistsException;
+import com.stackroute.newsapp.exception.NewsNotFoundException;
+
+public interface NewsService {
+
+	boolean saveNews(News news) throws  NewsAlreadyExistsException, NewsNotFoundException;
+	
+	News updateNews(News News) throws NewsNotFoundException;
+
+	boolean deleteNews(int newsId) throws NewsNotFoundException;
+
+	News getNewsByUsernameAndTitle(String username, String title) throws NewsNotFoundException;
+
+	Set<News> getNews(String username);
+	
+	int getNewsIdByUsernameAndTitle(String username, String title);
+}

@@ -1,0 +1,8 @@
+package com.stackroute.newsapp.exception;
+
+public class NewsAlreadyExistsException {
+
+	public NewsAlreadyExistsException(String message){
+		super(message);
+	}
+}

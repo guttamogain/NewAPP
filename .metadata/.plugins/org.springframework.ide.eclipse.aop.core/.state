@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="MovieCruiserService"/>
+<aop-project name="NewsAuthenticateService"/>
+<aop-project name="AuthenticationService"/>
+<aop-project name="NewsServer"/>
+</aop-reference-model>

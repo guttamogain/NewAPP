@@ -1,0 +1,21 @@
+.navbar {
+	margin-bottom: 20px;
+
+}
+footer,
+footer .container {
+	background-color: #232323;
+	color: white;
+	font-size: 12px;
+	padding: 10px 0px 0px 0px;
+}
+footer 
+{
+	background-color: #232323;
+	color: white;
+	font-size: 1.5rem;
+	padding: 10px 0px 0px 0px;
+}
+footer a:hover {
+	text-decoration: none;
+}

@@ -1,0 +1,41 @@
+<div class="card text-white bg-dark float-right " id="login-card" style="width: 15%;">
+  <div class="card-header text-center text-white">Register</div>
+  <div class="card-body">
+      <form name="form" (ngSubmit)="f.form.valid " #f="ngForm" novalidate>
+          <div class="form-group" >
+            
+              <input type="text" class="form-control" name="username" id="username" [(ngModel)]="username" placeholder="Username" required />
+              <div *ngIf="f.submitted && !f.form.controls.userid.valid" class="help-block text-danger">Username is required</div>
+          </div>
+          <div class="form-group" >
+
+              <input type="password" class="form-control" name="password" id="password" [(ngModel)]="password" placeholder="Password" required />
+              <div *ngIf="f.submitted && !f.form.controls.password.valid" class="help-block text-danger">Password is required</div>
+          </div>
+          <div class="form-group" >
+            
+              <input type="text" class="form-control" name="firstname" id="firstname" [(ngModel)]="firstname" placeholder="Firstname" required />
+              <div *ngIf="f.submitted && !f.form.controls.userid.valid" class="help-block text-danger">First is required</div>
+          </div>
+          <div class="form-group" >
+           
+              <input type="text" class="form-control" name="lastname" id="lastname" [(ngModel)]="lastname" placeholder="Lastname" required />
+              <div *ngIf="f.submitted && !f.form.controls.password.valid" class="help-block text-danger">Lastname is required</div>
+          </div>
+          <div class="form-group">
+              <button [routerLink]="['/login']"  class="btn btn" id="register-btn" (click)="registerUser()" type="submit">Register</button>
+          </div>
+      </form>
+  </div>
+</div>
+
+    <div>
+        <h2><strong>Search worldwide news with code</strong></h2>
+        <h5>Get breaking news headlines, and search for articles from over 30,000 news sources and blogs with our news API</h5>
+        <div>
+            <p><strong><h2>A huge range of publishers  News API indexes articles from over 30,000 worldwide sources, including:</h2></strong></p>
+            <h5>We crawl and index news articles from over 30,000 news sources and blogs. We also monitor the top and breaking news headlines
+                 from the following 138 of the most notable of these sources. You can go through for integration examples.</h5>
+            
+        </div>
+    </div>

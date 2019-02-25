@@ -1,0 +1,36 @@
+package com.stackroute.newsapp.repository;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import javax.transaction.Transactional;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import com.stackroute.newsapp.domain.News;
+
+
+@RunWith(MockitoJUnitRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = Replace.NONE)
+@Transactional
+public class NewsRepoTest {
+
+	@Autowired
+	private  NewsRepository repo;
+	public void setRepo(final NewsRepository repo) {
+		this.repo = repo;
+	}
+	
+	@Test
+	public void testSaveMovie(){
+		repo.save(new News(109876, "author", "title", "description", "url", "urlToImage", "publishedAt", "content", "username"));
+		final News news = repo.getOne(1);
+		assertThat(news.getDescription()).isEqualTo("TITLE");
+		
+	}
+}

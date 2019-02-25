@@ -1,0 +1,40 @@
+package com.stackroute.newsapp.repository;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.stackroute.newsapp.domain.News;
+import com.stackroute.newsapp.model.User;
+import com.stackroute.newsapp.service.NewsServiceImpl;
+
+@RunWith(MockitoJUnitRunner.class)
+public class NewsRepoTest {
+
+	@Autowired
+	private NewsRepository repo;
+	
+	@Mock
+	NewsServiceImpl newsService;
+	
+	
+	@Test
+	public void testSaveMovie(){
+		News entity = new News(123, "author", "title", "description", "url", "urlToImage", "publishedAt", "content", "username");
+		repo.save(entity );
+		verify(repo, times(1)).save(Mockito.any(News.class));
+		verifyNoMoreInteractions(repo);
+		
+		
+	}
+}

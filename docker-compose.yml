@@ -1,0 +1,45 @@
+version: '3'
+services:
+  user-app:
+   image: user-app
+   build: NewsAuthenticateService/
+   restart: always
+   network_mode: host
+   ports:
+    - '8089:8089'
+   expose:
+    - 8089
+   depends_on:
+    - news-mysql
+
+  news-app:
+    image: news-app
+    build: NewsServer/
+    restart: always
+    network_mode: host
+    ports:
+      - 8081:8081
+    expose:
+      - 8080
+    depends_on:
+      - news-mysql
+
+  news-mysql:
+    image: mysql:5.5
+    network_mode: host
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_USER: app_root
+      MYSQL_PASSWORD: root123
+      MYSQL_DATABASE: newsDb
+
+  angular:
+   image: angular-app
+   build: .
+   restart: always
+   network_mode: host
+   container_name: angular-docker
+   ports:
+    - 4200:4200

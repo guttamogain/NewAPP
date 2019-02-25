@@ -1,0 +1,47 @@
+<div *ngIf="isAdmin">
+  <div class="container-fluid"*ngFor="let news of watchListNews">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <img class="" src="{{news.urlToImage}}" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Title :{{news.title}}</h4>
+                        <h5 class="card-text">{{news.author}} </h5><br>
+                        <h5 class="card-text">{{news.description}}</h5><br>
+                        <p class="card-text">{{news.content}}</p><br>
+                        <button [hidden]="" id="addBtn" type="button" class="btn btn-primary btn-lg  btn-block" [(ngModel)]="news.title" (click)="updateNews()"> Update News Locally</button>
+                        <button [hidden]="" id="addBtn" type="button" class="btn btn-primary btn-lg  btn-block"  (click)="deleteNews(news.author,news.title,news.description,news.url,news.urlToImage,news.publishedAt,news.content)"> Delete News from WatchList</button>
+                    </div>
+                </div>
+         </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isAdmin">
+    <div class="container-fluid"*ngFor="let news of watchListNews">
+      <div class="row">
+          <div class="col-12 mt-3">
+              <div class="card">
+                  <div class="card-horizontal">
+                      <div class="img-square-wrapper">
+                          <img class="" src="{{news.urlToImage}}" alt="Card image cap">
+                      </div>
+                      <div class="card-body">
+                          <h4 class="card-title">Title :{{news.title}}</h4>
+                          <h5 class="card-text">{{news.author}} </h5><br>
+                          <h5 class="card-text">{{news.description}}</h5><br>
+                          <p class="card-text">{{news.content}}</p><br>
+                          <a href="{{news.url}}" target="_blank" id="deatailBtn" type="button" class="btn btn-primary btn-lg  btn-block"  > Go To Source Page</a>
+                          <button [hidden]="" id="deleteBtn" type="button" class="btn btn-primary btn-lg  btn-block"  (click)="deleteNews(news.author,news.title,news.description,news.url,news.urlToImage,news.publishedAt,news.content)"> Delete News from WatchList</button>
+                          <button [hidden]="" id="updateBtn" type="button" class="btn btn-primary btn-lg  btn-block"  (click)="updateNews(news.title)"> Update News from WatchList</button>
+                      </div>
+                  </div>
+                </div>
+          </div>
+      </div>
+  </div>
+</div>

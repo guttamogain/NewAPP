@@ -1,0 +1,31 @@
+package com.stackroute.newsapp.repository;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.stackroute.newsapp.domain.News;
+import com.stackroute.newsapp.service.NewsServiceImpl;
+
+@RunWith(MockitoJUnitRunner.class)
+public class NewsRepoTest {
+
+	@InjectMocks
+	private NewsRepository repo;
+	
+	@Mock
+	NewsServiceImpl newsService;
+	
+	
+	@Test
+	public void testSaveMovie(){
+		News entity = new News(123, "author", "title", "description", "url", "urlToImage", "publishedAt", "content", "username");
+		repo.save(entity );
+		assertThat(entity.getDescription()).isEqualTo("TITLE");
+		
+	}
+}

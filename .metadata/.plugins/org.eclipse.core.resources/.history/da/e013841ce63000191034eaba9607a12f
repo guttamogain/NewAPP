@@ -1,0 +1,43 @@
+package com.stackroute.newsapp.repository;
+
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+
+import javax.transaction.Transactional;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.stackroute.newsapp.domain.News;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = Replace.NONE)
+@Transactional
+public class NewsRepoTest {
+
+	@Autowired
+	private transient NewsRepository repo;
+	public void setRepo(final NewsRepository repo) {
+		this.repo = repo;
+	}
+	
+	
+	
+	@Test
+	public void testSaveMovie(){
+		News entity = new News(123, "author", "title", "description", "url", "urlToImage", "publishedAt", "content", "username");
+		repo.save(entity );
+		verify(repo, times(1)).save(Mockito.any(News.class));
+		verifyNoMoreInteractions(repo);
+		
+		
+	}
+}

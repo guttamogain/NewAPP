@@ -1,0 +1,51 @@
+<div class="container" *ngIf="news">
+  <div class="panel panel-default">
+    
+    <br>
+    <div class="panel-body" >
+      <div class="row">
+        <div class="col-md-6">
+          <img *ngIf="news"  src="{{news.urlToImage}}">
+        </div>
+        <div class="col-md-6">
+          <ul class="list-group">
+            
+            <li class="list-group-item" style="color:black">
+              <strong>Title:</strong> {{news.title}}
+            </li>
+            
+            <li class="list-group-item" style="color:black">
+              <strong>Author:</strong> {{news.author}}
+            </li>
+
+            <li class="list-group-item" style="color:black">
+              <strong>publishedAt:</strong> {{news.publishedAt}}
+            </li>
+
+            <li class="list-group-item" style="color:black">
+              <strong>description:</strong> {{news.description}}
+            </li>
+            <li class="list-group-item" style="color:black">
+              <textarea name="description" id="description-text" cols="50" rows="4" [(ngModel)]="description" placeholder="New Description:"></textarea>
+            </li>
+
+            <li class="list-group-item" style="color:black" >
+              <strong>content:</strong> {{news.content}}
+            </li>
+            
+            <li class="list-group-item" style="color:black">
+              <textarea name="content" id="content-text" cols="50" rows="4" [(ngModel)]="content" placeholder="New Content: "></textarea>
+            </li>
+
+          </ul>
+          <br>
+          
+          <button [hidden]="" id="addBtn" type="button" class="btn btn-primary btn-lg  btn-block"  (click)="addToWatchList(news.author,news.title,news.description,news.url,news.urlToImage,news.publishedAt,news.content)"> Add To WatchList</button>
+          <button [hidden]="" id="deleteBtn" type="button" class="btn btn-primary btn-lg  btn-block"  (click)="deleteNews(news.author,news.title,news.description,news.url,news.urlToImage,news.publishedAt,news.content)"> Delete News from WatchList</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  

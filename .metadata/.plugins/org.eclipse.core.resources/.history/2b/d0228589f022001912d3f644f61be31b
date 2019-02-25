@@ -1,0 +1,5 @@
+package com.stackroute.newsapp.exceptions;
+
+public class UserNotFoundException extends Throwable{
+
+}
